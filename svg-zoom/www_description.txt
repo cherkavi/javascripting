@@ -1,0 +1,55 @@
+1) download SVGPan.js
+2) create SVG image
+3) create map.html
+4) insert svg ( without xml-header ) to map.html
+5) change id of svg: svg_image
+6) change root <p> id to: viewport
+7) script changes:
+	7.1) change root element ( replace whole document ):
+		var root=document.getElementById('svg_image');
+	7.2) redirect event listeners:
+		root.addEventListener('mousewheel', handleMouseWheel, false);
+		root.addEventListener('DOMMouseScroll', handleMouseWheel, false);
+8) add script to html ( put it to end of document - before </body> )
+	<script src="SVGPan.js"> </script>
+9) events:
+	9.1) move:
+		function move(x,y){
+			var gravity=document.getElementById('viewport');
+			var stateNew=gravity.getCTM().inverse();
+			setCTM(gravity, stateNew.inverse().translate(x,y));
+		}
+	9.2) zoom:
+		function zoom(x,y,zoomSize){
+			var svgImage=document.getElementById('svg_image');
+			var k=root.createSVGMatrix().translate(x,y).scale(zoomSize).translate(-x, -y);
+			var gravity=document.getElementById('viewport');
+			setCTM(gravity, gravity.getCTM().multiply(k));
+		}
+		
+	9.3) draw element:
+		var svgns="http://www.w3.org/2000/svg";
+
+		function draw_circle(x,y,r,id){
+			var shape=document.createElementNS(svgns, "circle");
+			shape.setAttributeNS(null, "cx", 25);
+			shape.setAttributeNS(null, "cy", 25);
+			shape.setAttributeNS(null, "r", 25);
+			shape.setAttributeNS(null, "fill", "green");
+			shape.setAttribute("id",id);
+			document.getElementById("viewport").appendChild(shape);
+		}
+		
+	9.4) remove element
+		function remove_element(id){
+			var element=document.getElementById(id);	
+			if(element!=null){
+				document.getElementById('viewport').removeChild(element)		
+			}
+		}
+	9.5) add event to elements
+		document.getElementById('some id').onclick=function(){
+			alert('calata');		
+		}
+		
+9.6)
