@@ -1,7 +1,13 @@
-# javascripting
+## javascripting
 javascript ( ECMA6, JS ) code samples
 
-# TODO
+## Online IDE for JavaScript:
+* https://jsfiddle.net/
+* http://codepen.io/
+* http://plnkr.co/
+
+
+## TODO
 * [promises](https://classroom.udacity.com/courses/ud898)
 * [data visualization and D3.js](https://classroom.udacity.com/courses/ud507)
 * [stream adventure](http://nodeschool.io)
