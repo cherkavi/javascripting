@@ -1,0 +1,278 @@
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link href="styles.css" rel="stylesheet" type="text/css">
+  <link href="styles.module.css" rel="stylesheet" type="text/css">
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <!-- script src="d3.v5.js"></script  -->
+
+
+  <script>
+    'use strict';
+    const log = (sel, msg) => console.log(msg, sel);
+    const p = (x1, y1) => `${x1} ${y1} `;
+  </script>
+</head>
+
+
+<body>
+  <div id="divId" style="display: block;"></div>
+  <div id="divIdTooltip" class="tooltipD3"></div>
+
+
+  <script>
+    const title = "Population";
+    const parentSvgElement = "divId";
+    const tooltipId = "divIdTooltip"
+
+    const width = 600;
+    const height = 600;
+
+    const radius = 150;
+    const radiusStep = 50;
+    const delimiterWidth = 2
+    const fontFamily = "Arial";// "Montserrat";
+    const fontSizeArcCalc = (innerRadius, outerRadius) => (outerRadius-innerRadius)/2.4;
+    const fontSizeSector = (innerRadius, outerRadius) => (outerRadius-innerRadius)/7;
+
+    const colors = {
+      "Born outside the U.S.":"#AC4B77",
+      "M": "#5BAFD7",
+      "F": "#91B848",
+      "Born in the U.S.":"#DA4655",
+      "U.S. Citizen": "#E16D4F",
+      "Not U.S. Citizen": "#F7BF44"
+    };
+
+    const textReplacement = {
+      "Born outside the U.S.": "Born\n outside the\n U.S.",
+      "Born in the U.S.": "Born in\nthe U.S.",
+    }
+
+    /**
+     * all next value is the percent of the "parent"
+     */
+    const data = {
+      "Born outside the U.S.":{
+        "value": 67,
+        "children": {
+          "U.S. Citizen":{
+            "value": 50,
+            "children": {
+              "M": {"value": 40},
+              "F": {"value": 60}
+            }
+          },
+          "Not U.S. Citizen":{
+            "value": 50,
+            "children": {
+              "M": {"value": 40},
+              "F": {"value": 60}
+            }
+          }
+        }
+      },
+      "Born in the U.S.":{
+        "value": 33,
+        "children": {
+          "M": {"value": 60},
+          "F": {"value": 40}
+        }
+      }
+    }
+
+    class ArcElement{
+      constructor(jsonObject, title){
+        this._title = title;
+        this._value = jsonObject["value"];
+        this._children = Array()
+        if ("children" in jsonObject){
+          for ( each in jsonObject["children"]){
+            this._children.push(new ArcElement(jsonObject["children"][each], each))
+          }
+        }
+      }
+      get title(){
+        return this._title;
+      }
+      get value(){
+        return this._value;
+      }
+      get children(){
+        return this._children
+      }
+      hasChildren(){
+        return this._children.length>0;
+      }
+      toString(){
+        return `[${this._title}  ${this._value}   ${this._children}]`
+      }
+    }
+
+    const elements = []    
+    for (each in data){
+      elements.push(new ArcElement(data[each], each))
+    }
+
+    // canvas for drawing    
+    d3.select("#" + parentSvgElement)
+      .selectAll("svg")
+      .remove();
+
+    const svg = d3
+      .select("#" + parentSvgElement)
+      .append("svg")
+      .attr("width", width)
+      .attr("height", height)
+      .append("g")
+      .attr("transform", `translate( ${width/2}, ${height/2})`);
+
+    ////////////////////////
+    // Drawing elements 
+    ////////////////////////
+
+    const angleCalculator = (rangeAngleBegin, rangeAngleEnd, previousAngle, nextPercentValue) =>
+        rangeAngleBegin + (rangeAngleEnd-rangeAngleBegin)*nextPercentValue/100 + previousAngle;
+
+    const drawArc = (innerRadius, outerRadius, startRadian, endRadian, color, arcTitle, textRotation=true ) => {
+      // draw arc/sector
+      const arc = d3.arc()
+          .innerRadius(innerRadius)
+          .outerRadius(outerRadius)
+          .startAngle(startRadian)
+          .endAngle(endRadian);
+        svg.append("path")
+          .attr("fill", color)
+          .attr("d", arc)
+          .attr("stroke", "white")
+          .attr("stroke-width", delimiterWidth);          
+          ;
+
+      const id = arcTitle.replace(/ /g, "")+Math.trunc(99999*Math.random());
+
+      // draw title on arc/sector
+      if (arcTitle){
+        const distance = (outerRadius-innerRadius)/2 + innerRadius;
+        const radian = (endRadian-startRadian)/2 + startRadian;
+        const coordinatesRotation = -90*Math.PI/180;
+        const x = distance *  Math.cos(radian+coordinatesRotation);
+        const y = distance *  Math.sin(radian+coordinatesRotation);
+
+        if (textRotation){
+          const arc = d3.arc()
+          .innerRadius(distance)
+          .outerRadius(distance)
+          .startAngle(startRadian)
+          .endAngle(endRadian);
+        svg.append("path")
+          .attr("fill", color)
+          .attr("id", id)
+          .attr("d", arc)
+          ;
+        const angle = radian*180/Math.PI-90
+        let startOffset;
+        let dx;
+        let dy;
+        if (angle>45 && angle<135){
+          if ( arcTitle.length>1){
+            startOffset = (2 * Math.PI * distance * angle/360)*2;
+            dx = "0%";
+            dy = -1*(outerRadius-innerRadius)/7;
+            rotate="";
+          }else{
+            startOffset="30%";
+            dx = "0%";
+            dy = -1*(outerRadius-innerRadius)/3;
+            rotate="180";
+          }
+        }else{
+          startOffset="25%";
+          dx = "0%";
+          dy = 0;
+          rotate="";
+        }
+        svg.append("text")
+          .style("fill", "white")
+          .style("font-family", fontFamily)
+          .style("font-style", "normal")
+          .style("font-weight", "bold")
+          .style("font-size",  fontSizeArcCalc(innerRadius, outerRadius)+"px")
+          .attr("text-anchor", "middle")          
+          .attr("x", 0)
+          .attr("y", (outerRadius-innerRadius)/4)
+          .attr("dx", dx)
+          .attr("dy", dy)          
+          .attr("rotate", rotate)
+          .append("textPath")
+            .attr("xlink:href", "#"+id)
+            .attr("startOffset", startOffset)
+            
+            .text(arcTitle)
+        }else{
+          let lines = []
+          if (arcTitle in textReplacement){
+            lines = textReplacement[arcTitle].split("\n");
+          }else{
+            lines = [arcTitle]
+          }          
+          const fontSize = fontSizeSector(innerRadius, outerRadius);
+          const height = (fontSize * (lines.length-1 + 0.15*(lines.length-1)));
+          const fontScale = d3.scaleLinear()
+                            .domain([0,lines.length-1])
+                            .range([y-height/2, y+height/2])
+          for (eachLine in lines){
+            svg.append("text")
+              .style("fill", "white")
+              .style("font-family", fontFamily)
+              .style("font-style", "normal")
+              .style("font-weight", "bold")
+              .style("font-size", fontSize+"px")
+              .attr("text-anchor", "middle")
+              .attr("x", x)
+              .attr("y", fontScale(eachLine))
+              .text(lines[eachLine]);
+          }
+        }
+
+      }      
+    }
+
+    const buildChildren = (radius, radiusStep, parentAngleBegin, parentAngleEnd, elements) =>{
+      let previousAngle = 0;
+      for (each in elements){
+        const nextElement = elements[each];
+        const percentValue = nextElement.value
+        const title = nextElement.title;
+        const colorElement = colors[title];
+        
+        const nextAngle = angleCalculator(parentAngleBegin, parentAngleEnd, previousAngle, percentValue);
+        drawArc(radius, radius+radiusStep, previousAngle+parentAngleBegin, nextAngle, colorElement, title)
+
+        if (nextElement.hasChildren()){
+          buildChildren(radius+radiusStep, radiusStep, previousAngle+parentAngleBegin, nextAngle, nextElement.children);
+        }
+
+        previousAngle = nextAngle-parentAngleBegin;
+      }
+    }
+
+    let anglePrevious = 0;
+
+    for (each in elements){
+      const mainElement = elements[each];
+      let angleNext = angleCalculator(0, 2*Math.PI, anglePrevious, mainElement.value);
+      
+      drawArc(0, radius, anglePrevious, angleNext, colors[mainElement.title], mainElement.title, textRotation=false);
+
+      buildChildren(radius, radiusStep, anglePrevious, angleNext, mainElement.children);
+
+      anglePrevious = angleNext-anglePrevious;
+    }
+
+
+
+  </script>
+</body>
+
+</html>

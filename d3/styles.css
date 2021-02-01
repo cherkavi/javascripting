@@ -1,0 +1,161 @@
+.g {
+    margin: 0 10px;
+  }
+  
+  .tooltipD3 {
+    width: 150px;
+    height: 170px;
+    background: #353546;
+    border-radius: 8px;
+    display: none;
+    flex-direction: column;
+    padding: 24px;
+    position: absolute;
+    left: 20px;
+  }
+  
+  .tooltipD3:after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 40%;
+    width: 20px;
+    height: 20px;
+    background: #353546;
+    border-radius: 4px;
+    transform: rotate(45deg);
+  }
+  
+  .svgWrap {
+    display: none;
+  }
+  
+  .svgWrap:nth-child(1) {
+    display: initial;
+  }
+  
+  .svgLine{
+    color: red;
+  }
+  
+  .svg_diagram_title {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 26px;
+  }
+  
+  .svg_diagram_legend_element{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    /* identical to box height, or 143% */
+    display: flex;
+    align-items: center;
+  }
+  
+  .svg_diagram_pie_legend_element{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    /* or 137% */
+    display: flex;
+    align-items: center;
+    /* Paragraphs */
+    color: #353546;
+  }
+  
+  
+  .svg_diagram_axis_left{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    color: #ABAFB9;
+  }
+  .svg_diagram_axis_bottom{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #353546;
+  }
+  
+  .dateTool {
+    color: #ffffff;
+    text-align: center;
+  }
+  
+  .name {
+    font-weight: 800;
+    font-size: 44px;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 20px;
+  }
+  .sub_name {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 34px;
+    /* or 142% */
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+  }
+  
+  .tooltipTextD3 {
+    color: #ffffff;
+    font-size: 12px;
+    margin-left: 10px;
+    max-width: 80px;
+    overflow: hidden;
+    word-break: break-all;
+    line-height: 14px;
+  }
+  
+  .linkPanelD3 {
+    display: flex;
+  }
+  
+  .xAxisD3 line {
+    stroke: #eaeaea;
+  }
+  
+  .xAxisD3 path {
+    stroke: #eaeaea;
+  }
+  
+  .xAxisD3 text {
+    fill: #353546;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  
+  .yAxisD3 path {
+    stroke: none;
+  }
+  
+  .yAxisD3 text {
+    fill: #abafb9;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  
+  .linkPanelD3 svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .grid-line {
+    stroke: #eaeaea;
+    shape-rendering: crispedges;
+    stroke-opacity: 0.2;
+    stroke-dasharray: 5, 5;
+  }
+  
