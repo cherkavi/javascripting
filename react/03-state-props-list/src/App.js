@@ -41,7 +41,7 @@ class App extends Component {
                     <input onChange={this.changeInput} value={this.state.inputText} />
                     <p>{this.state.inputLength}</p>
                     <ValidationComponent textLength={this.state.inputLength}></ValidationComponent>
-                    {inputTextElements.map((eachChar, position) => <CharComponent key={eachChar+position} charIndex={position} removeChar={this.removeChar} letter={eachChar}/>)}
+                    {inputTextElements.map((eachChar, position) => <CharComponent key={eachChar+position} highlightSelected="white" charIndex={position} removeChar={this.removeChar} letter={eachChar}/>)}
                     <br/>
                     <br/>
                     <li>Create an input field (in App component) with a change listener which outputs the length of the
