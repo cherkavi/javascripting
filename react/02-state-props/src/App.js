@@ -5,6 +5,7 @@ import UserInput from "./UserInput";
 
 
 function App() {
+    // functional component state using
     const [firstUser, setFirstUser] = React.useState("first user")
 
     function changeFirstUser(newNameForUser){
