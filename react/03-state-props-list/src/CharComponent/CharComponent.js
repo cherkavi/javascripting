@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import styled from 'styled-components'
+import styleClasses from './CharComponent.css'
 
 const StyledDiv = styled.div`
     display: inline-block;
@@ -44,16 +45,19 @@ class CharComponent extends Component {
 
         // --------------
         // apply styles from css
-        // project should be created via command line: create-react !!!
+        // npm run eject
+        // change file: webpack.config.dev.js
+        // {loader: require.resolve('css-loader'),
+        //  options: { importLoaders: 1, modules: true, localIdentName: '[name]__[local]__[hash:base64:5]'}
+        //  }
         // import styles from './CharComponent.css'
-        // console.log(styles.charComponentStyle)
         // console.log(styles)
-        // return <div className={styles.charComponentStyle}>{this.props.letter}</div>;
+        return <div key={this.props.keyValue} onClick={()=>this.props.removeChar(this.props.keyValue)} className={styleClasses.charComponentStyle}>{this.props.letter}</div>;
 
         // --------------
-        return <StyledDiv highlightSelected={(this.props.customProperty)? this.props.customProperty : "aqua"}
-                    onClick={this.props.removeChar}
-                    style={this.style}>{this.props.letter}</StyledDiv>;
+        // return <StyledDiv key={this.props.key} highlightSelected={(this.props.customProperty)? this.props.customProperty : "aqua"}
+        //             onClick={this.props.removeChar}
+        //             style={this.style}>{this.props.letter}</StyledDiv>;
 
     }
 }

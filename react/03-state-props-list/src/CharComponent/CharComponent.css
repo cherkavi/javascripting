@@ -5,3 +5,14 @@
     margin: 16px;
     border: 1px solid black
 }
+
+
+.charComponentStyle:hover {
+    display: inline-block;
+    padding: 16px;
+    text-align: center;
+    margin: 16px;
+    border: 1px solid black;
+    font-size: large;
+    color: blue;
+}
