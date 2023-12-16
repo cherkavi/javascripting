@@ -1,7 +1,12 @@
 ## javascripting
 javascript ( ECMA6, JS ) code samples
+* React
+* Angular
+* Vue
+* Svelte
 
 ## Online IDE for JavaScript:
+* https://codesandbox.io/
 * https://jsfiddle.net/
 * http://codepen.io/
 * http://plnkr.co/
