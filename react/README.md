@@ -16,8 +16,17 @@
 function MyComponent(){
     return <> <div>hello</div> </>
 }
-function MyCompositeComponent(){
-    return <div> <MyComponent /> </div>
+export function MyCompositeComponent(){
+    return (<div> <MyComponent /> </div>)
+}
+```
+```js
+// ! import Component from 'react';
+import React, { Component } from 'react';
+export class MainGoal extends Component {
+    render(){    
+        return <p>My main goal</p>
+    }
 }
 ```
 ### component create 
@@ -27,9 +36,34 @@ function MyCompositeComponent(){
 COMPONENT_NAME=MyComponent
 npx crcf $COMPONENT_NAME
 ```
-
-## Props
-## State
+### Resources ( img, css)
+```js
+import myImg from './assets/img/1.jpg'
+function TableHeader(){
+    // post-compiled-generated `src` property will be included 
+    // no "" or '' should be added 
+    return <> <img src={myImg} /> </>
+}
+```
+### Props
+> parameters for component, put data into component
+```jsx
+function TableHeader(props){
+    return <> hello {props.name} {props.title} </>
+}
+function TableHeader({name, title="default_title"}){
+    return <> hello {name} {title} </>
+}
+function Table(){
+    const userData={name: "Egor", title="Pilot"}
+    return <>
+        <TableHeader name="Valerian" title="Gameboy" />
+        <TableHeader  {...userData} />
+        <TableHeader2 {...userData} />
+    </>
+}
+```
+### State
 
 
 ## [create react app](https://create-react-app.dev/docs/adding-typescript/)
