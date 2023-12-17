@@ -5,8 +5,17 @@ import ReactDOM from 'react-dom/client';
 // Property 'name' does not exist on type 'Readonly<{}>' 
 class UserDescription extends React.Component<{name:string, position:string}, {}> {
     render(){
-        // console.debug("value:" + this.props)
         return <li> Name: {this.props.name} Position: {this.props.position} </li>
+    }
+} 
+
+class UserChildrenDescription extends React.Component<any, {}> {
+    render(){
+        if (!this.props.name){
+            return <li>_ Name: {this.props.children} </li>
+        }else{
+            return <li>, Name: {this.props.name} Position: {this.props.position} </li>
+        }
     }
 } 
 
@@ -27,6 +36,8 @@ function App() {
     const returnValue = [];
     for(const eachUser of users){
         returnValue.push( <UserDescription {...eachUser} /> );
+        returnValue.push( <UserChildrenDescription {...eachUser} /> );
+        returnValue.push( <UserChildrenDescription>ChildName</UserChildrenDescription> );
         returnValue.push( <AnotherDescription name={eachUser.name} position={eachUser.position} /> )
     }
   return (
