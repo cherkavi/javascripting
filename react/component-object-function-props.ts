@@ -1,6 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
+class BoldText extends React.Component<any>{
+    render(){
+        const boldStyle={color:"red", font:"bold"};
+        return <span style={boldStyle}>{this.props.children}</span>
+    }
+}
 // avoid error like: 
 // Property 'name' does not exist on type 'Readonly<{}>' 
 class UserDescription extends React.Component<{name:string, position:string}, {}> {
@@ -12,7 +18,7 @@ class UserDescription extends React.Component<{name:string, position:string}, {}
 class UserChildrenDescription extends React.Component<any, {}> {
     render(){
         if (!this.props.name){
-            return <li>_ Name: {this.props.children} </li>
+            return <li>_ Other Elements: {this.props.children} </li>
         }else{
             return <li>, Name: {this.props.name} Position: {this.props.position} </li>
         }
@@ -37,7 +43,7 @@ function App() {
     for(const eachUser of users){
         returnValue.push( <UserDescription {...eachUser} /> );
         returnValue.push( <UserChildrenDescription {...eachUser} /> );
-        returnValue.push( <UserChildrenDescription>ChildName</UserChildrenDescription> );
+        returnValue.push( <UserChildrenDescription><BoldText>children text</BoldText></UserChildrenDescription> );
         returnValue.push( <AnotherDescription name={eachUser.name} position={eachUser.position} /> )
     }
   return (
