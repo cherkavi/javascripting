@@ -64,7 +64,23 @@ function Table(){
 }
 ```
 ### State
+```javascript
+import { useState } from 'react';
+// import React from 'react';
 
+function MyComponent(){    
+    // `setValue` is not updating `value` immediatelly,
+    // value will be updated after the whole component refresh
+    const [value, setValue]=useState(initValue); // React.useState();
+    
+    return { <>  </> }
+}
+```
+
+### Hooks ( starts with 'use...')
+rules of hooks:
+1. should be called inside the component
+2. not inside the nested function
 
 ## [create react app](https://create-react-app.dev/docs/adding-typescript/)
 ```sh
@@ -106,7 +122,7 @@ export default Radium(MyComponent);
 // for media - wrap root component with:
 // import { StyleRoot } from 'radium';
 // <StyleRoot> </StyleRoot>
-```
+```.
 
 ![NextJS ServerSideRendering](https://i.postimg.cc/L6nxk6BP/nextjs-ssr.png)
 
