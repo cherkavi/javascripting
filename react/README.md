@@ -76,6 +76,21 @@ function MyComponent(){
     return { <>  </> }
 }
 ```
+also useful for the conditional output
+```javascript
+function App(){
+    return (<>
+    { isDefinedValue && <b>Value is defined</b>} 
+    {!isDefinedValue && <i>undefined Value </i>} 
+    </>);
+}
+```
+```javascript
+function App(){
+    const returnValue = <div>{someValue}</div>
+    return returnValue;
+}
+```
 
 ### Hooks ( starts with 'use...')
 rules of hooks:
@@ -90,7 +105,7 @@ npx create-react-app $APP_NAME
 
 # https://www.npmjs.com/package/cra-template-typescript
 npx create-react-app $APP_NAME --template typescript
-npx create-react-app $APP_NAME --template cra-template-typescript
+npx create-react-app $APP_NAME --template cra-template-typescript.
 
 cd $APP_NAME
 # `npm install` has already been executed by npx 
