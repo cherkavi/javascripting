@@ -25,10 +25,13 @@ export function MyCompositeComponent(){
 import React, { Component } from 'react';
 export class MainGoal extends Component {
     render(){    
-        return <p>My main goal</p>
+        // return <div id='my_div_id'><p>my text</p></div>
+        // create HTML element manually
+        return React.createElement('div', {id: 'my_div_id'}, React.createElement('p', null, 'my text'))
     }
 }
 ```
+
 ### component create 
 #### component create via npx
 ```sh
@@ -42,6 +45,7 @@ import myImg from './assets/img/1.jpg'
 function TableHeader(){
     // post-compiled-generated `src` property will be included 
     // no "" or '' should be added 
+    // <Fragment> with new notation <>
     return <> <img src={myImg} /> </>
 }
 ```
@@ -71,7 +75,7 @@ import { useState } from 'react';
 function MyComponent(){    
     // `setValue` is not updating `value` immediatelly,
     // value will be updated after the whole component refresh
-    const [value, setValue]=useState(initValue); // React.useState();
+    const [value, setValue]=useState(initValue); // React.useState(); - component field ( ReactJS evaluates stack of the execution)
     
     return { <>  </> }
 }
@@ -87,7 +91,11 @@ function App(){
 ```
 ```javascript
 function App(){
-    const returnValue = <div>{someValue}</div>
+    if (true){
+        returnValue = <div>{someValue}</div>
+    } else {
+        returnValue = <span>no data</span>
+    }
     return returnValue;
 }
 ```

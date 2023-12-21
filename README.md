@@ -3,7 +3,7 @@ javascript ( ECMA6, JS ) code samples
 * React
 * Angular
 * Vue
-* Svelte
+* [Svelte](https://learn.svelte.dev/tutorial/welcome-to-svelte)
 
 ## Online IDE for JavaScript:
 * https://codesandbox.io/
