@@ -11,7 +11,7 @@ const users=[
     {name: "Ivan", position: "Slave"}
 ]
 
-//// Dynamic component, set component type without hardcoded value
+//// Dynamic component, set component type without hardcoded value, runtime HtmlElement definition
 
 // using property as name of HtmlElement
 function UserDescription(props: any){
