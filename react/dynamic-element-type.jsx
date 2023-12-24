@@ -35,6 +35,21 @@ function UserDescription2(props: any){
     </>
 }
 
+// dynamic component complex example
+// export default function Button({Icon, children, mode="filled", ...properties}) {
+    // {Icon, children, mode = "filled",}
+    // let mode = props.mode?props.mode:"filled";
+    // let children = props.children;
+
+//    let cssClassName = "button "+mode+"-button "+ (properties.className?properties.className:"" ) + (Icon?' icon-button':"");
+//    return <button className={cssClassName} {...properties}>
+//            {Icon && <span className="button-icon"><Icon /></span>}
+//            <span>{children}</span>
+//        </button>
+//}
+
+
+
 // root element
 function App() {
     const returnValue = [];

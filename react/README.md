@@ -1,4 +1,7 @@
 # ReactJS
+## Code Examples
+* [udemy react projects/examples](https://github.com/academind/react-complete-guide-course-resources/)
+
 ## JSX
   * [jsx rules](https://react.dev/learn/writing-markup-with-jsx)
     * Return a single root element ( or <> </>)
@@ -6,6 +9,7 @@
     * camelCase all most of the things! 
   * [html-to-jsx converter](https://transform.tools/html-to-jsx)
   * files must have `.jsx` suffix ( extension )
+
 ## Components
 ### Rules:
  * function must start with UpperCase
@@ -118,6 +122,15 @@ npx create-react-app $APP_NAME --template cra-template-typescript.
 cd $APP_NAME
 # `npm install` has already been executed by npx 
 npm start # `npm run start` - package.json#scripts
+```
+[alternative: dev optimization](https://vitejs.dev/guide/)
+```sh
+APP_NAME=my_app_name
+npm create vite@latest $APP_NAME -- --template react
+npm create vite@latest $APP_NAME -- --template react-ts
+
+npm install
+npm run dev
 ```
 
 

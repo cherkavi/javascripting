@@ -6,7 +6,10 @@ javascript ( ECMA6, JS ) code samples
 * [Svelte](https://learn.svelte.dev/tutorial/welcome-to-svelte)
 
 ## Online IDE for JavaScript:
+### Ide with VirtualMachine running ( terminal access )
 * https://codesandbox.io/
+* https://stackblitz.com/
+### JavaScript editors
 * https://jsfiddle.net/
 * http://codepen.io/
 * http://plnkr.co/
