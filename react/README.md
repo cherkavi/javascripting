@@ -2,6 +2,18 @@
 ## Code Examples
 * [udemy react projects/examples](https://github.com/academind/react-complete-guide-course-resources/)
 
+## Map
+```mermaid
+mindmap
+)react(
+    (JSX)
+    (Components)
+        (State)
+        (Properties)
+        (Hooks)
+            
+```
+
 ## JSX
   * [jsx rules](https://react.dev/learn/writing-markup-with-jsx)
     * Return a single root element ( or <> </>)
@@ -14,7 +26,12 @@
 ### Rules:
  * function must start with UpperCase
  * function must return renderable value ( JSX )
- * small example
+ * small example  
+  
+![type of components](https://i.postimg.cc/RhWJ08B2/ksnip-20210211-230707.png)
+![lifecycle - creation](https://i.postimg.cc/5y6kP6F9/lifecycle-creation-learning-card.png)
+![lifecycle - update](https://i.postimg.cc/wxGr1cS1/lifecycle-update-external-learning-card.png)
+
 ### component example
 ```js
 function MyComponent(){
@@ -53,7 +70,7 @@ function TableHeader(){
     return <> <img src={myImg} /> </>
 }
 ```
-### Props
+### Properties
 > parameters for component, put data into component
 ```jsx
 function TableHeader(props){
@@ -133,11 +150,6 @@ npm install
 npm run dev
 ```
 
-
-![type of components](https://i.postimg.cc/RhWJ08B2/ksnip-20210211-230707.png)
-
-![lifecycle - creation](https://i.postimg.cc/5y6kP6F9/lifecycle-creation-learning-card.png)
-![lifecycle - update](https://i.postimg.cc/wxGr1cS1/lifecycle-update-external-learning-card.png)
 
 ## style pseudo selector
 ```js
