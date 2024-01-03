@@ -26,7 +26,7 @@ mindmap
 ### Rules:
  * function must start with UpperCase
  * function must return renderable value ( JSX )
- * small example  
+ * function/component way of creation  
   
 ![type of components](https://i.postimg.cc/RhWJ08B2/ksnip-20210211-230707.png)
 ![lifecycle - creation](https://i.postimg.cc/5y6kP6F9/lifecycle-creation-learning-card.png)
