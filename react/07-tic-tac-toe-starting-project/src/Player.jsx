@@ -1,25 +1,22 @@
 import React, { useState } from 'react';
 
-function Player ({ name, symbol }) {
-    const [isEnabled, setIsEnabled] = useState(false);
-    const [editName, setEditName] = useState(name);
+function Player ({ name: initName, symbol }) {
+    const [isEditEnabled, setIsEditEnabled] = useState(false);
+    const [editName, setEditName] = useState(initName);
 
     function buttonClick(){
-        if(isEnabled){
+        if(isEditEnabled){
             console.log("new name: "+editName);
         }
-        setIsEnabled( isEnabled => !isEnabled);
+        setIsEditEnabled( isEnabled => !isEnabled);
     }
 
-    const buttonText = isEnabled ? 'Save' : 'Edit';
+    const buttonText = isEditEnabled ? 'Save' : 'Edit';
 
-    function setNameBlock(){
-
-    }
-    
-    const nameBlock=isEnabled ? 
+    const nameBlock=isEditEnabled ? 
         <input type="text"
                value={editName}
+               defaultValue={initName}
                onChange={(e)=> setEditName(e.target.value)}
         /> : 
         <span className="player-name">{editName}</span>;
