@@ -95,12 +95,19 @@ import { useState } from 'react';
 
 function MyComponent(){    
     // `setValue` is not updating `value` immediatelly,
-    // value will be updated after the whole component refresh
+    // value will be updated after the whole component arefresh
+    // `setValue` has ability to receive parameters:
+    // 1. direct value `value`
+    // 2.     function 'value=>value'
     const [value, setValue]=useState(initValue); // React.useState(); - component field ( ReactJS evaluates stack of the execution)
     
-    return { <>  </> }
+    return { <div> value </div> }
 }
 ```
+<b> if your state based on previous value,</b>  
+<i>Due to scheduled updates</i>: use `setValue(value=>!value)` instead of `setValue(!value)`  
+<i>for reproducing</i>: just duplicate `setValue(!value);setValue(!value);`
+
 also useful for the conditional output
 ```javascript
 function App(){

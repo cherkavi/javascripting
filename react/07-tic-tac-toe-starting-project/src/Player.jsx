@@ -4,15 +4,18 @@ function Player ({ name, symbol }) {
     const [isEnabled, setIsEnabled] = useState(false);
     const [editName, setEditName] = useState(name);
 
-    function handleSave() {
-        console.log("new name: "+editName);
-        setIsEnabled(false);
-      };
-
-    const buttonClick = () =>
-        isEnabled?handleSave():setIsEnabled(true);
+    function buttonClick(){
+        if(isEnabled){
+            console.log("new name: "+editName);
+        }
+        setIsEnabled( isEnabled => !isEnabled);
+    }
 
     const buttonText = isEnabled ? 'Save' : 'Edit';
+
+    function setNameBlock(){
+
+    }
     
     const nameBlock=isEnabled ? 
         <input type="text"
@@ -24,8 +27,8 @@ function Player ({ name, symbol }) {
 
     return <span className="player">
         {nameBlock}
-      <span className="player-symbol">{symbol}</span>
-      <button onClick={buttonClick}>{buttonText}</button>
+        <span className="player-symbol">{symbol}</span>
+        <button onClick={buttonClick}>{buttonText}</button>
     </span>
     ;
 }  
