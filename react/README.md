@@ -98,7 +98,8 @@ function MyComponent(){
     // value will be updated after the whole component arefresh
     // `setValue` has ability to receive parameters:
     // 1. direct value `value`
-    // 2.     function 'value=>value'
+    // 2.     function 'oldValue=>newValue'
+    //                for Objects: const deepCopy = JSON.parse(JSON.stringify(originalObject));
     const [value, setValue]=useState(initValue); // React.useState(); - component field ( ReactJS evaluates stack of the execution)
     
     return { <div> value </div> }
@@ -126,6 +127,22 @@ function App(){
     }
     return returnValue;
 }
+```
+
+#### Lifting State up
+```mermaid
+flowchart LR
+
+ac[parent \n component] --props(state.func)--> cc1[child #1]
+ac[parent \n component] --props(state.func)--> cc2[child #2]
+
+s[parent \n state] --o  ac
+
+
+cc1 -----> s
+cc2 -----> s
+
+
 ```
 
 ### Hooks ( starts with 'use...')

@@ -8,11 +8,12 @@ function Player ({ name: initName, symbol }) {
         if(isEditEnabled){
             console.log("new name: "+editName);
         }
-        setIsEditEnabled( isEnabled => !isEnabled);
+        setIsEditEnabled( oldState => !oldState);
     }
 
     const buttonText = isEditEnabled ? 'Save' : 'Edit';
 
+    // two-way-binding example
     const nameBlock=isEditEnabled ? 
         <input type="text"
                value={editName}
