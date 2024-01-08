@@ -6,7 +6,8 @@ function Player ({ name: initName, symbol }) {
 
     function buttonClick(){
         if(isEditEnabled){
-            console.log("new name: "+editName);
+            // output dynamic variable
+            console.log(`new name: ${editName}`);
         }
         setIsEditEnabled( oldState => !oldState);
     }

@@ -8,10 +8,9 @@ mindmap
 )react(
     (JSX)
     (Components)
-        (State)
-        (Properties)
-        (Hooks)
-            
+        State
+        Properties
+        Hooks
 ```
 
 ## JSX
@@ -20,11 +19,12 @@ mindmap
     * Close all the tags
     * camelCase all most of the things! 
   * [html-to-jsx converter](https://transform.tools/html-to-jsx)
-  * files must have `.jsx` suffix ( extension )
+  * files must have `.jsx` suffix ( extension ), 
+    start with capital letter
 
 ## Components
 ### Rules:
- * function must start with UpperCase
+ * function must start with UpperCase ( start with lowercase char - regular html element )
  * function must return renderable value ( JSX )
  * function/component way of creation  
   
@@ -40,6 +40,8 @@ function MyComponent(){
 export function MyCompositeComponent(){
     return (<div> <MyComponent /> </div>)
 }
+// if no `export function` previously, then
+// export default MyCompositeComponent
 ```
 ```js
 // ! import Component from 'react';
@@ -133,16 +135,13 @@ function App(){
 ```mermaid
 flowchart LR
 
-ac[parent \n component] --props(state.func)--> cc1[child #1]
-ac[parent \n component] --props(state.func)--> cc2[child #2]
+ac[parent \n component] --props(state.func)----> cc1[child #1]
+ac[parent \n component] --props(state.func)----> cc2[child #2]
 
 s[parent \n state] --o  ac
 
-
-cc1 -----> s
-cc2 -----> s
-
-
+cc1 -----> |state.func|s
+cc2 -----> |state.func|s
 ```
 
 ### Hooks ( starts with 'use...')
@@ -164,7 +163,7 @@ cd $APP_NAME
 # `npm install` has already been executed by npx 
 npm start # `npm run start` - package.json#scripts
 ```
-[alternative: dev optimization](https://vitejs.dev/guide/)
+[alternative: build tool with optimization](https://vitejs.dev/guide/)
 ```sh
 APP_NAME=my_app_name
 npm create vite@latest $APP_NAME -- --template react
@@ -201,8 +200,4 @@ export default Radium(MyComponent);
 ### import alias
 ```js
 import { Location as LocationModel } from 'src/app/core/models/location.model';
-```
-
-```sh
-
 ```
