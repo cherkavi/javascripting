@@ -11,6 +11,8 @@ function Player ({ name: initName, symbol }) {
             // output dynamic variable
             console.log(`new name: ${editName}`);
         }
+        // update with previous state
+        // postponed execution
         setIsEditEnabled( oldState => !oldState);
     }
 

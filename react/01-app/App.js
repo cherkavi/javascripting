@@ -104,6 +104,7 @@ class Game extends React.Component {
     input_field_change(event){
         console.log(`${event.target.value}   ${event.target.name}`)
         this.setState({ input_field: event.target.value})
+        // onSubmit - prevent default behaviour
         event.preventDefault();
     }
 

@@ -6,14 +6,20 @@
 ```mermaid
 mindmap
 )react(
-    (JSX)
+    (JSX rules)
+        return<br/>single element
+        properties from HTML,className
+        lowercase - native html
+        array.map<br>for multidimensional
+            key properties - unique id
     (Components)
         [useState]
             State lift up
+            update with<br>previous state
         [Properties]
-            props forwarding
-            props children
-            props default value
+            props<br>forwarding
+            props<br>children
+            props<br>default value
         [Hooks]
         [css module]
         [event listener]
@@ -24,6 +30,9 @@ mindmap
     * Return a single root element ( or <> </>)
     * Close all the tags
     * camelCase all most of the things! 
+    * {} should return array/simple_value/variable_with_JSX
+    * { booleanExpression && (variableWithJSX) }
+    * for array.map should be used also key properties for each object
   * [html-to-jsx converter](https://transform.tools/html-to-jsx)
   * files must have `.jsx` suffix ( extension ), 
     start with capital letter
@@ -106,7 +115,7 @@ function MyComponent(){
     // `setValue` is not updating `value` immediatelly,
     // `setValue` has 2 options to receive parameters:
     // 1. direct value `value`
-    // 2.     function 'oldValue=>newValue'
+    // 2.     function 'oldValue=>newValue' update with previous state
     //                for Objects: const deepCopy = JSON.parse(JSON.stringify(originalObject));
     const [value, setValue]=useState(initValue); // React.useState(); - component field ( ReactJS evaluates stack of the execution)
     return { <div> value </div> }
