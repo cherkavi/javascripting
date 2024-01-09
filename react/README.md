@@ -8,13 +8,15 @@ mindmap
 )react(
     (JSX)
     (Components)
-        useState
+        [useState]
             State lift up
-        Properties
-            Properties-forwarding
-        Hooks
-        css module
-        event listener
+        [Properties]
+            props forwarding
+            props children
+            props default value
+        [Hooks]
+        [css module]
+        [event listener]
 ```
 
 ## JSX
@@ -100,14 +102,13 @@ import { useState } from 'react';
 // import React from 'react';
 
 function MyComponent(){    
+    // value will be updated after the whole component refresh
     // `setValue` is not updating `value` immediatelly,
-    // value will be updated after the whole component arefresh
-    // `setValue` has ability to receive parameters:
+    // `setValue` has 2 options to receive parameters:
     // 1. direct value `value`
     // 2.     function 'oldValue=>newValue'
     //                for Objects: const deepCopy = JSON.parse(JSON.stringify(originalObject));
     const [value, setValue]=useState(initValue); // React.useState(); - component field ( ReactJS evaluates stack of the execution)
-    
     return { <div> value </div> }
 }
 ```

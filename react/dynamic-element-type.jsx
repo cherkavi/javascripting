@@ -26,7 +26,9 @@ function UserDescription(props: any){
 
 // using property as HtmlElement
 function ItalicText(props: any){
-    return <i>{props.children}</i>
+      // ItalicText({children}){
+      // props children - get children properties for component
+        return <i>{props.children}</i>
 }
 function UserDescription2(props: any){
     // name of the constant must start with upper case to be a ElementName

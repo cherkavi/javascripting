@@ -11,21 +11,31 @@ const users = [
     {name: "Ivan", position: "Slave"}
 ]
 
-// Double destruction
-// Default parameter
-function UserDescription({ user: {name, position = "Unknown"} }: any){
-    return <>
-            <b>Name:</b> {name}<br/>
-            <i>Position:</i> {position}
-            <hr />
-    </>
+//                                        Double destruction
+//                                               props default value
+//                         props default value for no-value = true
+function UserDescription({ isHuman, user: {name, position = "Unknown"} }: any){
+    if (isHuman){
+        return <>
+                <b>Name:</b> {name}<br/>
+                <i>Position:</i> {position}
+                <hr />
+        </>
+    }else{
+        return <>
+                <b>Id:</b> {name}<br/>
+                <i>Place:</i> {position}
+                <hr />
+        </>
+    }
 }
 
 // root element
 function App() {
     const returnValue = [];
     for(const eachUser of users){
-        returnValue.push( <UserDescription   user={eachUser} /> );
+        //                                  default valule for isHuman = true
+        returnValue.push( <UserDescription  isHuman user={eachUser} /> );
     }
   return (
     <ul>
