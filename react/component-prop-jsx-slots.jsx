@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { HTMLElement } from 'typescript';
 
 function UserDescription({firstPart, secondPart}: any){
     return <>

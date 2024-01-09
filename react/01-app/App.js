@@ -22,6 +22,7 @@ class Square extends React.Component {
 function Square(props){
     return (<button
             className="square"
+            // event listener example
             onClick={props.onClick}
         > { props.button_text }
         </button>)
@@ -100,10 +101,10 @@ class Game extends React.Component {
         console.log(this.state.input_field)
     }
 
-    input_field_change(e){
-        console.log(`${e.target.value}   ${e.target.name}`)
-        this.setState({ input_field: e.target.value})
-        e.preventDefault();
+    input_field_change(event){
+        console.log(`${event.target.value}   ${event.target.name}`)
+        this.setState({ input_field: event.target.value})
+        event.preventDefault();
     }
 
     render() {
@@ -111,6 +112,7 @@ class Game extends React.Component {
             <div className="game">
                 <div className="game-board">
                     <Board ref={this.child} />
+                    // event listener example
                     <button onClick={this.printBoardStatus}> board status</button>
                 </div>
                 <div>

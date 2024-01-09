@@ -1,6 +1,7 @@
 //                       object destructor
 function ChildObject({...properties}){
     //              create object from all properties with key-value    
+    //                                                   properties forwarding
     return <section onClick={()=>{console.log("click")}} {...properties}></section>
 }
 

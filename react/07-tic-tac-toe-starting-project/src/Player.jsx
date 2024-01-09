@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+//                    css module example must have <component>.module.css name
+import classes from './Player.module.css';
 
 function Player ({ name: initName, symbol }) {
     const [isEditEnabled, setIsEditEnabled] = useState(false);
@@ -17,16 +19,18 @@ function Player ({ name: initName, symbol }) {
     // two-way-binding example
     const nameBlock=isEditEnabled ? 
         <input type="text"
+                // two-way-binding: output 
                value={editName}
                defaultValue={initName}
+                // two-way-binding: input 
                onChange={(e)=> setEditName(e.target.value)}
         /> : 
-        <span className="player-name">{editName}</span>;
+        <span className={classes.player_name}>{editName}</span>;
     
-
-    return <span className="player">
+    //                      css module example 
+    return <span className={classes.player}>
         {nameBlock}
-        <span className="player-symbol">{symbol}</span>
+        <span className={classes.player_symbol}>{symbol}</span>
         <button onClick={buttonClick}>{buttonText}</button>
     </span>
     ;
