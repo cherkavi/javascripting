@@ -12,15 +12,16 @@ mindmap
         lowercase - native html
         array.map<br>for multidimensional
             key properties - unique id
-    (Components)
+    (Hooks)
         [useState]
             State lift up
             update with<br>previous state
+        [useEffect]
+    (Components)
         [Properties]
             props<br>forwarding
             props<br>children
             props<br>default value
-        [Hooks]
         [css module]
         [event listener]
 ```
@@ -157,6 +158,9 @@ s[parent \n state] --o  ac
 cc1 -----> |state.func|s
 cc2 -----> |state.func|s
 ```
+
+### [useEffect](https://react.dev/reference/react/useEffect)
+
 
 ### Hooks ( starts with 'use...')
 rules of hooks:
