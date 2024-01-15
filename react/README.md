@@ -24,6 +24,8 @@ mindmap
             props<br>default value
         [css module]
         [event listener]
+    (Route)
+    
 ```
 
 ## JSX
