@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 
-function App() {
+function SimpleRouter() {
 
+    // error route - showing in all the rest cases
     const ErrorRoute = () => {
         return <div> No route found</div>
     };
@@ -22,11 +23,7 @@ function App() {
             }
         ]
     );
-  return (
-    <>
-    <RouterProvider router={customRouter} />
-    </>
-  )
+  return <RouterProvider router={customRouter} />
 }
 
-export default App
+export default SimpleRouter

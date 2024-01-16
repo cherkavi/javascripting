@@ -25,7 +25,8 @@ mindmap
         [css module]
         [event listener]
     (Route)
-    
+        [error route]
+        [route with layout]
 ```
 
 ## JSX
