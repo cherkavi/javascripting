@@ -26,3 +26,8 @@ javascript ( ECMA6, JS ) code samples
 * [Java/JavaScript Reactive](http://reactivex.io/)
 * RazorFlow
 * DropTiles
+
+### ECMA6
+- [features](http://es6-features.org)
+- [Let's Learn ES6](youtube.com) 
+- [practice](es6katas.org)

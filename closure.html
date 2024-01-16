@@ -1,0 +1,18 @@
+<html>
+	<head>
+	</head>
+	
+	<body>
+
+		<script type="text/javascript" >
+			function test_this(x){
+				var additionalCalculation=x*x;
+				return function(y){
+					return additionalCalculation+y;
+				}
+			}
+	
+			console.log(test_this(2)(5));
+		</script>
+	</body>
+</html>

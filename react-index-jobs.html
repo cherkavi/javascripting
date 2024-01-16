@@ -1,0 +1,72 @@
+<head>
+	<head>
+		<script src="https://fb.me/react-15.0.1.min.js"></script>
+		<script src="https://fb.me/react-dom-15.0.1.min.js"></script>
+		<script src="https://fb.me/react-with-addons-15.0.1.min.js"></script>
+		<script src="http://fb.me/JSXTransformer-0.12.2.js"></script>
+		<script src="https://cdn.rawgit.com/abdmob/x2js/master/xml2json.js"></script>
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+		<style type="text/css">
+			img {width: 25px}
+		</style>
+		
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js"> </script>
+		<script>
+			class Job {
+				constructor(jsonObject){
+					this.identifier = jsonObject["identifier"];
+					this.command = jsonObject["job-command"];
+					this.status = jsonObject["job-status"];
+					this.exitCode = jsonObject["exit-code"];
+					this.queuedOn = jsonObject["queued-on"];
+					this.infoUrl = jsonObject["info-url"];
+					this.logUrl = jsonObject["log-url"];
+					this.lastHeartBeat = jsonObject["last-heart-beat"];
+					this.jobArgs = jsonObject["job-args"];
+				}
+			}			
+		</script>
+		
+		<script type="text/jsx">
+			class JobsList extends React.Component{
+				constructor(){
+					super();
+					this.state={ jobData: [] };
+				}
+				render() {
+					function item(itemData) {
+						return (
+							<li>
+								<a href={itemData.logUrl}><img src={"images/job-"+itemData.status+".png"} /></a>   <a href={itemData.infoUrl}>{itemData.command}</a>
+							</li>);
+					};
+					return <ul>{this.state.jobData.map(item)}</ul>;
+				}
+				updateUI(data){
+					this.setState( {jobData:data} );
+				}
+				componentDidMount(){
+					var currentObject=this;
+					$.get( "jobs", 
+						function( data ) {
+							var resultArray = []
+							var jsonData = new X2JS().xml2json(data)
+							var jobs = jsonData["jobs-info-response"]["jobs"]
+							$.each(jobs, function(index, item){
+								$.each(item, function(arrayIndex, arrayItem){
+									resultArray.push(new Job(arrayItem))
+								})
+							});
+							currentObject.updateUI(resultArray);
+						}
+					);
+				}
+			};
+			ReactDOM.render(<JobsList />, document.getElementById("destination"))
+		</script>
+
+	</head>
+	<body>
+		<div id="destination" />
+	</body>
+</head>

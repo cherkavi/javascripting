@@ -1,0 +1,36 @@
+<html>
+	<head>
+	</head>
+	
+	<body>
+
+		<script type="text/javascript" >
+
+			function calculate(a){
+				try{
+					throw(" this is unexpected exception");
+					return 100/a;
+				}catch(e){
+					console.log("can't calculate the value:"+e);
+					return 0;
+				}finally{
+					console.log("this is finally block");
+				}
+
+			}
+			
+			window.onerror=function(e, url, line){
+				console.log("just replacement of the standart handler:"+e+"   url:"+url+"   line:"+line);
+				// inefficient : return false;
+			}
+			
+			function calculate2(a){
+				throw("unhandled exception");
+				return 200/a;
+			}
+
+			console.log(calculate(0));
+			console.log(calculate2(-0));
+		</script>
+	</body>
+</html>
