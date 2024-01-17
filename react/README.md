@@ -27,6 +27,8 @@ mindmap
     (Route)
         [error route]
         [route with layout]
+        [Link]
+        [react-router-dom.useNavigate]
 ```
 
 ## JSX

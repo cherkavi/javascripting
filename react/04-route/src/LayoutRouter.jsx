@@ -1,4 +1,4 @@
-import { RouterProvider, createBrowserRouter} from 'react-router-dom'
+import { RouterProvider, createBrowserRouter, Link, NavLink, useNavigate } from 'react-router-dom'
 
 import { Outlet } from 'react-router-dom' // Outlet 
 function Background(){
@@ -11,7 +11,12 @@ function Background(){
     </>
 }
 
+
 function LayoutRouter() {
+    
+    function gotoHello() {
+        console.log("goto")
+    }
 
     const customRouter = createBrowserRouter(
         [
@@ -35,7 +40,12 @@ function LayoutRouter() {
             }
         ]
     );
-  return <RouterProvider router={customRouter} />
+  return <>
+    <RouterProvider router={customRouter} />  
+    {/** anchor element without refreshing the page 
+     <Link to="/say-hello">say-hello</Link>
+    */}
+  </>
 }
 
 export default LayoutRouter
