@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <style>
+            input[type='number']{width: 60px;} 
+        </style>
+        <script>
+            function pdfGoTo(anchorElementId, numberElementId){
+                var url=document.getElementById(anchorElementId);
+                var pageNumber=document.getElementById(numberElementId);
+                bookUrl=`${url.href}#page=${pageNumber.value}`;
+                console.log(`try to open the book: ${bookUrl}`)
+                window.open(bookUrl,"_blank")
+            }
+            function decreaseCounter(textElement){
+
+            }
+        </script>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <td>
+                    <a href="file:///media/q453337/E886-CC5B/deutsch/german-books/frank/Deutsche%20Grammatik_Frank.pdf" id="e1_u" >go to goolge</a>                    
+                </td>
+                <td>
+                    <input type="number" value="1" id="e1_n" maxlength="5">
+                </td>
+                <td>
+                    <input type="button" value="lesen" onclick="pdfGoTo('e1_u', 'e1_n')" />
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>
