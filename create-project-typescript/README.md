@@ -75,4 +75,9 @@ mv package.json2 package.json
 
 npm run build
 x-www-browser http://127.0.0.1:8080; npm run start
+
+# 8 autocompile and autoload
+npm install --save-dev webpack webpack-cli webpack-dev-server ts-loader html-webpack-plugin
+# cp webpack.config.js to your project 
+npx webpack-dev-server --open
 ```
