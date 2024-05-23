@@ -13,7 +13,6 @@ cat package.json
 # 2. typscript 
 npm install typescript ts-node --save-dev
 find node_modules
-npm install -g http-server
 
 # 3. init typescript config
 npx tsc --init
@@ -59,7 +58,14 @@ echo '
 tsc
 
 # 6. start project
-http-server src
+
+# 6.1 http-server
+npm install http-server
+npx http-server src
+
+# 6.2 lite-server
+npm install lite-server
+npx lite-server --baseDir=src
 
 # optional: 7. create scripts in package.json 
 jq '.scripts.build="tsc"' package.json > package.json2
