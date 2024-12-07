@@ -17,7 +17,8 @@ javascript ( ECMA6, JS ) code samples
 
 ## TODO
 * [promises](https://classroom.udacity.com/courses/ud898)
-* [data visualization and D3.js](https://classroom.udacity.com/courses/ud507)
+* [data visualization with D3.js](https://classroom.udacity.com/courses/ud507)
+* [data visualization with Vega](https://vega.github.io/vega/examples/)
 * [stream adventure](http://nodeschool.io)
 * [patterns](http://largescalejs.ru/)
 * [electron](https://egghead.io/lessons/javascript-create-a-hello-world-app-using-electron)
