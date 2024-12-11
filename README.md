@@ -5,6 +5,10 @@ javascript ( ECMA6, JS ) code samples
 * Vue
 * [Svelte](https://learn.svelte.dev/tutorial/welcome-to-svelte)
 
+## Mobile Devices, cross platform
+* react native
+* [capacitor - cross platform native runtime](https://capacitorjs.com/)
+
 ## Online IDE for JavaScript:
 ### Ide with VirtualMachine running ( terminal access )
 * https://codesandbox.io/
